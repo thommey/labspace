@@ -49,6 +49,8 @@ if {![info exists ::ls_stats_events]} {
 	set ::ls_stats_events [list]
 }
 
+package require sbnc 1.1
+
 bind pub - !labspace ls_pub_cmd_labspace
 bind pub - !nolabspace ls_pub_cmd_remove
 
@@ -143,7 +145,7 @@ proc ls_flush_stats {} {
 		set name [lindex $event 2]
 		set arguments [lindex $event 3]
 
-		putmsg "#labspace.stats" "channel: $channel, name: $name, args: \"[join $arguments {" "}]\""
+#		putmsg "#labspace.stats" "channel: $channel, name: $name, args: \"[join $arguments {" "}]\""
 	}
 }
 
@@ -678,6 +680,7 @@ proc ls_remove_player {chan nick {forced 0}} {
 	ls_set_role $chan $nick ""
 
 	pushmode $chan -v $nick
+	utimer 1 [list flushmode $chan]
 
 	foreach player [ls_get_players $chan] {
 		if {[ls_get_vote $chan $player] == $nick} {

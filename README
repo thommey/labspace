@@ -1,11 +1,11 @@
 LabSpace
 ========
 
-This is an implementation of the 'Mafia' game (http://en.wikipedia.org/wiki/Mafia_(party_game)) for sbnc.
+This is an implementation of the 'Mafia' game (http://en.wikipedia.org/wiki/Mafia_(party_game)) for eggdrop.
 
-In order to use it you will need to load the script in your sbnc.tcl config file:
+In order to use it you will need to load the script in your eggdrop config file:
 
-	setctx "<yourbot>"
+	source scripts/sbnc.tcl
 	source scripts/labspace.tcl
 
 The script can be used in any of the channels your bot is in (even simultaneously). It supports the following channel commands:
